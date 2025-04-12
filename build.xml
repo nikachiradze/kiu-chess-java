@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project default="create_run_jar" name="chess-java">
+<project default="create_run_jar" name="ChessProject-java">
     <!--this file was created by Eclipse Runnable JAR file Export Wizard-->
     <!--ANT 1.7 is required-->
     <!--define folder properties-->
@@ -7,10 +7,10 @@
     <property name="dir.workspace" value="${dir.buildfile}/.."/>
     <property name="dir.jarfile" value="${dir.buildfile}"/>
     <target name="create_run_jar">
-        <jar destfile="${dir.jarfile}/chess-java.jar">
+        <jar destfile="${dir.jarfile}/ChessProject-java.jar">
             <manifest>
                 <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
-                <attribute name="Rsrc-Main-Class" value="Game"/>
+                <attribute name="Rsrc-Main-Class" value="ChessProject.App.Game"/>
                 <attribute name="Class-Path" value="."/>
                 <attribute name="Rsrc-Class-Path" value="./"/>
             </manifest>

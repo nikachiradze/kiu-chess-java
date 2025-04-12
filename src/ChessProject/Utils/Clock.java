@@ -1,3 +1,4 @@
+package ChessProject.Utils;
 
 public class Clock {
     private int hh;
