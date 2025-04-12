@@ -27,6 +27,10 @@ public abstract class Piece {
         }
     }
 
+    public Square getCurrentSquare() {
+        return currentSquare;
+    }
+
     public boolean move(Square fin) {
         Piece occup = fin.getOccupyingPiece();
 
@@ -53,16 +57,16 @@ public abstract class Piece {
         return color;
     }
 
-    public Image getImage() {
+    public BufferedImage getImage() {
         return img;
     }
 
-    public void draw(Graphics g) {
-        int x = currentSquare.getX();
-        int y = currentSquare.getY();
-
-        g.drawImage(this.img, x, y, null);
-    }
+//    public void draw(Graphics g) {
+//        int x = currentSquare.getX();
+//        int y = currentSquare.getY();
+//
+//        g.drawImage(this.img, x, y, null);
+//    }
 
     public int[] getLinearOccupations(Square[][] board, int x, int y) {
         int lastYabove = 0;

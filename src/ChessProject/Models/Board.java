@@ -1,10 +1,6 @@
 package ChessProject.Models;
 
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.GridLayout;
-import java.awt.Image;
-import java.awt.Point;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -13,6 +9,7 @@ import java.util.List;
 
 import javax.swing.*;
 
+import ChessProject.Utils.PaintSquare;
 import ChessProject.Views.GameWindow;
 
 @SuppressWarnings("serial")
@@ -65,10 +62,12 @@ public class Board extends JPanel implements MouseListener, MouseMotionListener 
 
                 if ((xMod == 0 && yMod == 0) || (xMod == 1 && yMod == 1)) {
                     board[x][y] = new Square(this, 1, y, x);
-                    this.add(board[x][y]);
+//                    this.add(board[x][y]);
+                    this.add(new PaintSquare(board[x][y]));
                 } else {
                     board[x][y] = new Square(this, 0, y, x);
-                    this.add(board[x][y]);
+//                    this.add(board[x][y]);
+                    this.add(new PaintSquare(board[x][y]));
                 }
             }
         }
@@ -149,7 +148,10 @@ public class Board extends JPanel implements MouseListener, MouseMotionListener 
         for (int x = 0; x < 8; x++) {
             for (int y = 0; y < 8; y++) {
                 Square sq = board[y][x];
-                sq.paintComponent(g);
+//                sq.paintComponent(g);
+                PaintSquare paintSquare = new PaintSquare(sq);
+                paintSquare.paintComponent(g);
+
             }
         }
 
@@ -167,7 +169,8 @@ public class Board extends JPanel implements MouseListener, MouseMotionListener 
         currX = e.getX();
         currY = e.getY();
 
-        Square sq = (Square) this.getComponentAt(new Point(e.getX(), e.getY()));
+        PaintSquare ps = (PaintSquare) this.getComponentAt(new Point(e.getX(), e.getY()));
+        Square sq = ps.getSquare();
 
         if (sq.isOccupied()) {
             currPiece = sq.getOccupyingPiece();
@@ -182,7 +185,8 @@ public class Board extends JPanel implements MouseListener, MouseMotionListener 
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        Square sq = (Square) this.getComponentAt(new Point(e.getX(), e.getY()));
+        PaintSquare ps = (PaintSquare) this.getComponentAt(new Point(e.getX(), e.getY()));
+        Square sq = ps.getSquare();
 
         if (currPiece != null) {
             if (currPiece.getColor() == 0 && whiteTurn)
