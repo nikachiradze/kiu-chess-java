@@ -1,4 +1,4 @@
-
+package ChessProject.Models;
 
 import java.awt.Color;
 import java.awt.Graphics;

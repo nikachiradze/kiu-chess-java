@@ -1,3 +1,6 @@
+package ChessProject.App;
+
+import ChessProject.Views.StartMenu;
 
 import javax.swing.*;
 
