@@ -34,10 +34,10 @@ public class GameWindow {
 
 
         try {
-            Image whiteImg = ImageIO.read(getClass().getResource("wp.png"));
+            Image whiteImg = ImageIO.read(getClass().getResource("/wp.png"));
             gameWindow.setIconImage(whiteImg);
         } catch (Exception e) {
-            System.out.println("chess.Game file wp.png not found");
+            System.out.println(" file wp.png not found");
         }
 
         gameWindow.setLocation(100, 100);
@@ -51,8 +51,9 @@ public class GameWindow {
         gameWindow.add(gameData, BorderLayout.NORTH);
 
         this.board = new Board(this);
+        PaintBoard paintBoard = new PaintBoard(board);
 
-        gameWindow.add(board, BorderLayout.CENTER);
+        gameWindow.add(paintBoard, BorderLayout.CENTER);
 
         gameWindow.add(buttons(), BorderLayout.SOUTH);
 

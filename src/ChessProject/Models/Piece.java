@@ -61,12 +61,6 @@ public abstract class Piece {
         return img;
     }
 
-//    public void draw(Graphics g) {
-//        int x = currentSquare.getX();
-//        int y = currentSquare.getY();
-//
-//        g.drawImage(this.img, x, y, null);
-//    }
 
     public int[] getLinearOccupations(Square[][] board, int x, int y) {
         int lastYabove = 0;

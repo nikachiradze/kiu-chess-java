@@ -1,4 +1,4 @@
-package ChessProject.Utils;
+package ChessProject.Views;
 
 import ChessProject.Models.Piece;
 import ChessProject.Models.Square;
@@ -34,7 +34,6 @@ public class PaintSquare extends JComponent {
         }
 
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
-        System.out.println(this.getX());
 
         if (this.square.getOccupyingPiece() != null && this.square.isDispPiece()) {
             Piece occupyingPiece = this.square.getOccupyingPiece();

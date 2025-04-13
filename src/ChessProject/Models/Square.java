@@ -1,12 +1,5 @@
 package ChessProject.Models;
 
-import ChessProject.Utils.PaintPiece;
-
-import java.awt.Color;
-import java.awt.Graphics;
-
-import javax.swing.*;
-
 @SuppressWarnings("serial")
 public class Square {
     private Board b;
@@ -27,7 +20,6 @@ public class Square {
         this.yNum = yNum;
 
 
-//        this.setBorder(BorderFactory.createEmptyBorder());
     }
 
     public int getColor() {
@@ -76,22 +68,6 @@ public class Square {
         this.occupyingPiece = p;
     }
 
-//    @Override
-//    public void paintComponent(Graphics g) {
-//        super.paintComponent(g);
-//
-//        if (this.color == 1) {
-//            g.setColor(new Color(221, 192, 127));
-//        } else {
-//            g.setColor(new Color(101, 67, 33));
-//        }
-//
-//        g.fillRect(this.getX(), this.getY(), this.getWidth(), this.getHeight());
-//
-//        if (occupyingPiece != null && dispPiece) {
-//            PaintPiece.draw(g, occupyingPiece.getCurrentSquare(), occupyingPiece.getImage());
-//        }
-//    }
 
     @Override
     public int hashCode() {

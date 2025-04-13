@@ -1,6 +1,4 @@
-package ChessProject.Utils;
-
-import ChessProject.Models.Square;
+package ChessProject.Views;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
