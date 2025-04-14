@@ -51,7 +51,7 @@ public class GameWindow {
         gameWindow.add(gameData, BorderLayout.NORTH);
 
         this.board = new Board(this);
-        PaintBoard paintBoard = new PaintBoard(board);
+        PaintBoard paintBoard = new PaintBoard(board, this);
 
         gameWindow.add(paintBoard, BorderLayout.CENTER);
 

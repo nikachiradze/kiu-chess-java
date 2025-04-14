@@ -1,5 +1,7 @@
 package ChessProject.Views;
 
+import ChessProject.Controllers.BoardController;
+import ChessProject.Helper.MouseHelper;
 import ChessProject.Models.Board;
 import ChessProject.Models.CheckmateDetector;
 import ChessProject.Models.Piece;
@@ -12,17 +14,30 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.List;
 
-public class PaintBoard extends JPanel implements MouseListener, MouseMotionListener {
+public class PaintBoard extends JPanel {
     Board board;
 
+    private int currX, currY;
 
-    public PaintBoard(Board board) {
+    private BoardController boardController;
+
+    public PaintBoard(Board board, GameWindow gw) {
         this.board = board;
+        this.boardController = new BoardController(board, gw);
+
+        MouseHelper mouseHelper = new MouseHelper(boardController, this);
+        addMouseListener(mouseHelper);
+        addMouseMotionListener(mouseHelper);
 
         setLayout(new GridLayout(8, 8, 0, 0));
-        this.addMouseListener(this);
-        this.addMouseMotionListener(this);
+//        this.addMouseListener(this);
+//        this.addMouseMotionListener(this);
 
+
+        this.setPreferredSize(new Dimension(400, 400));
+        this.setMaximumSize(new Dimension(400, 400));
+        this.setMinimumSize(this.getPreferredSize());
+        this.setSize(new Dimension(400, 400));
         for (int x = 0; x < 8; x++) {
             for (int y = 0; y < 8; y++) {
                 int xMod = x % 2;
@@ -38,12 +53,14 @@ public class PaintBoard extends JPanel implements MouseListener, MouseMotionList
             }
         }
 
-        this.setPreferredSize(new Dimension(400, 400));
-        this.setMaximumSize(new Dimension(400, 400));
-        this.setMinimumSize(this.getPreferredSize());
-        this.setSize(new Dimension(400, 400));
+    }
 
+    public void setCurrX(int currX) {
+        this.currX = currX;
+    }
 
+    public void setCurrY(int currY) {
+        this.currY = currY;
     }
 
     @Override
@@ -71,103 +88,5 @@ public class PaintBoard extends JPanel implements MouseListener, MouseMotionList
         }
     }
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
 
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-        this.board.setCurrX(e.getX());
-        this.board.setCurrY(e.getY());
-
-
-        PaintSquare ps = (PaintSquare) this.getComponentAt(new Point(e.getX(), e.getY()));
-        Square sq = ps.getSquare();
-
-        if (sq.isOccupied()) {
-            this.board.setCurrPiece(sq.getOccupyingPiece());
-            if (this.board.getCurrPiece().getColor() == 0 && this.board.getTurn())
-                return;
-            if (this.board.getCurrPiece().getColor() == 1 && !this.board.getTurn())
-                return;
-            sq.setDisplay(false);
-        }
-        repaint();
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        PaintSquare ps = (PaintSquare) this.getComponentAt(new Point(e.getX(), e.getY()));
-        Square sq = ps.getSquare();
-        Piece currPiece = this.board.getCurrPiece();
-        boolean whiteTurn = this.board.getTurn();
-        GameWindow g = this.board.getGameWindow();
-        if (this.board.getCurrPiece() != null) {
-            if (currPiece.getColor() == 0 && whiteTurn)
-                return;
-            if (currPiece.getColor() == 1 && !whiteTurn)
-                return;
-
-            List<Square> legalMoves = currPiece.getLegalMoves(this.board);
-            CheckmateDetector cmd = this.board.getCheckmateDetector();
-            this.board.setMovableSquares(cmd.getAllowableSquares(whiteTurn));
-
-
-            if (legalMoves.contains(sq) && this.board.getMovableSquares().contains(sq)
-                    && cmd.testMove(currPiece, sq)) {
-                sq.setDisplay(true);
-                currPiece.move(sq);
-                cmd.update();
-
-                if (cmd.blackCheckMated()) {
-                    this.board.setCurrPiece(null);
-                    repaint();
-                    this.removeMouseListener(this);
-                    this.removeMouseMotionListener(this);
-                    g.checkmateOccurred(0);
-                } else if (cmd.whiteCheckMated()) {
-                    this.board.setCurrPiece(null);
-                    repaint();
-                    this.removeMouseListener(this);
-                    this.removeMouseMotionListener(this);
-                    g.checkmateOccurred(1);
-                } else {
-                    this.board.setCurrPiece(null);
-                    this.board.setTurn(!whiteTurn);
-                    this.board.setMovableSquares(cmd.getAllowableSquares(whiteTurn));
-                }
-
-            } else {
-                currPiece.getPosition().setDisplay(true);
-                this.board.setCurrPiece(currPiece);
-            }
-        }
-
-        repaint();
-    }
-
-
-    @Override
-    public void mouseDragged(MouseEvent e) {
-        this.board.setCurrX(e.getX() - 24);
-        this.board.setCurrY(e.getY() - 24);
-
-        repaint();
-    }
-
-    @Override
-    public void mouseMoved(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
-    }
 }
