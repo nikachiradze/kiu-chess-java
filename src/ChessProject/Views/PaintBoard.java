@@ -71,6 +71,7 @@ public class PaintBoard extends JPanel {
             for (int y = 0; y < 8; y++) {
                 Square[][] squares = this.board.getSquareArray();
                 Square sq = squares[y][x];
+//                sq.setDisplay(true);
                 PaintSquare paintSquare = new PaintSquare(sq);
                 paintSquare.paintComponent(g);
 

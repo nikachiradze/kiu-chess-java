@@ -23,12 +23,6 @@ public class MouseHelper implements MouseListener, MouseMotionListener {
 
 
     @Override
-    public void mouseClicked(MouseEvent e) {
-
-
-    }
-
-    @Override
     public void mousePressed(MouseEvent e) {
         this.paintBoard.setCurrX(e.getX());
         this.paintBoard.setCurrY(e.getY());
@@ -56,6 +50,21 @@ public class MouseHelper implements MouseListener, MouseMotionListener {
     }
 
     @Override
+    public void mouseDragged(MouseEvent e) {
+        paintBoard.setCurrX(e.getX() - 24);
+        paintBoard.setCurrY(e.getY() - 24);
+
+        paintBoard.repaint();
+    }
+
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+
+    }
+
+    @Override
     public void mouseEntered(MouseEvent e) {
 
     }
@@ -65,13 +74,6 @@ public class MouseHelper implements MouseListener, MouseMotionListener {
 
     }
 
-    @Override
-    public void mouseDragged(MouseEvent e) {
-        paintBoard.setCurrX(e.getX() - 24);
-        paintBoard.setCurrY(e.getY() - 24);
-
-        paintBoard.repaint();
-    }
 
     @Override
     public void mouseMoved(MouseEvent e) {
