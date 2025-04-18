@@ -1,19 +1,28 @@
-# Chess for Java
+# ChessProject
 
-In the Spring of 2014, I created a two-player Chess game, with checkmate detection and a ChessProject clock as a part of a Programming course at Penn. Our objective was to develop and test a bug-free standalone game in Java, complete with a GUI and game logic components.
+A Java-based chess game implementation focusing on clean architecture, object-oriented design principles, and testability.
 
-I developed a bug-free, fast and well-designed product with a clean user interface and received the highest possible score in the assignment. The source code is in this repository.
+## 🧠 Project Overview
 
-## Technology
+This project started as an MVC-structured application and has since been transformed into a Maven project with a clean separation of responsibilities. The goal was to enhance code maintainability, readability, and testability by applying proper software design principles.
 
-This game is built using core Java, Java Swing GUI libraries and the jUnit test suite. It uses custom drawing for game components and self-programmed logic for checkmate detection. The code is modular, standalone and object oriented, which was a grading criteria for the assignment.
+## ✨ Key Improvements
 
-## Running
+### ✅ Code Refactoring
+- **Separated Responsibilities:** The original codebase violated several OOP principles. Classes like `Board` and `Piece` contained multiple responsibilities (e.g., UI logic, game logic). These were refactored to adhere to the **Single Responsibility Principle**.
+- **Mouse Interaction Handling:** Moved mouse-related logic from the `Board` class into a dedicated class responsible for handling mouse actions.
+- **Piece Movement Separation:** Movement logic was separated from the `Piece` models. The **Strategy Pattern** was applied to define unique movement rules for each piece type (e.g., `RookMovement`, `KnightMovement`, `QueenMovement`, etc.).
+- **Factory Pattern & Enums:** A **PieceFactory** and a `PieceType` `enum` were introduced to improve clarity and streamline piece creation.
+- **JUnit Tests:** Comprehensive unit tests were written using **JUnit** to verify allowed moves for different pieces, covering edge cases (e.g., movement from corners, blocked paths, etc.).
 
-Compile the project into an executable .jar file by running the following ANT build script on the command line. Make sure jar-in-jar-loader.zip in this repository is in the folder.
+### ♟️ Game Logic
+- **Refactored Checkmate Logic:** The check/checkmate logic was cleaned and partially refactored, though further improvements were planned.
 
-```
-ant -f build.xml
-```
+## 🧪 Testing
+Tests cover:
+- All possible movements for individual pieces.
+- Edge cases like movement from board edges or corners.
+- Valid/invalid movements depending on board state (e.g., blocked by friendly/enemy pieces).
 
-Then, run the executable .jar file, named _chess-java.jar_ to play.
+
+## 📁 Project Structure (Post-Refactor)
