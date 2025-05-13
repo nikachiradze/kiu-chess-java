@@ -25,7 +25,7 @@ public class KingTest {
                 square.removePiece();
             }
         }
-        king = new King(0, squareArray[0][0], "/bking.png");
+        king = new King(0, squareArray[0][0]);
         kingSquare = board.getSquareArray()[0][0];
         king.setPosition(kingSquare);
         kingMovement = new KingMovement(king);
@@ -66,7 +66,7 @@ public class KingTest {
             int newY = 4 + d[0];
             int newX = 4 + d[1];
             Square square = board.getSquareArray()[newY][newX];
-            Piece pawn = new Pawn(king.getColor(), square, "/wpawn.png");
+            Piece pawn = new Pawn(king.getColor(), square);
             square.setPiece(pawn);
             pawn.setPosition(square);
         }
@@ -92,7 +92,7 @@ public class KingTest {
             int newY = 4 + d[0];
             int newX = 4 + d[1];
             Square square = board.getSquareArray()[newY][newX];
-            Piece pawn = new Pawn(1, square, "/bpawn.png");
+            Piece pawn = new Pawn(1, square);
             square.setPiece(pawn);
             pawn.setPosition(square);
         }

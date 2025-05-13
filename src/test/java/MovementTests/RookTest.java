@@ -1,6 +1,9 @@
 package MovementTests;
 
-import main.ChessProject.Models.*;
+import main.ChessProject.Models.Board;
+import main.ChessProject.Models.Piece;
+import main.ChessProject.Models.Rook;
+import main.ChessProject.Models.Square;
 import main.ChessProject.PieceMovement.RookMovement;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,7 +30,7 @@ public class RookTest {
 
     @Test
     void testRookMovementFromCorner() {
-        Piece rook = new Rook(0, squareArray[0][0], "/brook.png");
+        Piece rook = new Rook(0, squareArray[0][0]);
         rook.setPosition(squareArray[0][0]);
         RookMovement rookMovement = new RookMovement(rook);
 
@@ -37,10 +40,10 @@ public class RookTest {
 
     @Test
     void testRookBlockedByAllies() {
-        Piece rook = new Rook(0, squareArray[0][0], "/brook.png");
+        Piece rook = new Rook(0, squareArray[0][0]);
         rook.setPosition(squareArray[0][0]);
-        squareArray[0][1].setPiece(new Rook(0, squareArray[0][1], "/brook.png")); // same team
-        squareArray[1][0].setPiece(new Rook(0, squareArray[1][0], "/brook.png")); // same team
+        squareArray[0][1].setPiece(new Rook(0, squareArray[0][1])); // same team
+        squareArray[1][0].setPiece(new Rook(0, squareArray[1][0])); // same team
 
         RookMovement rookMovement = new RookMovement(rook);
         List<Square> moves = rookMovement.getAllowedMoves(board);
@@ -49,10 +52,10 @@ public class RookTest {
 
     @Test
     void testRookCanCaptureEnemies() {
-        Piece rook = new Rook(0, squareArray[0][0], "/brook.png");
+        Piece rook = new Rook(0, squareArray[0][0]);
         rook.setPosition(squareArray[0][0]);
-        squareArray[0][3].setPiece(new Rook(1, squareArray[0][3], "/wrook.png")); // enemy
-        squareArray[4][0].setPiece(new Rook(1, squareArray[4][0], "/wrook.png")); // enemy
+        squareArray[0][3].setPiece(new Rook(1, squareArray[0][3])); // enemy
+        squareArray[4][0].setPiece(new Rook(1, squareArray[4][0])); // enemy
 
         RookMovement rookMovement = new RookMovement(rook);
         List<Square> moves = rookMovement.getAllowedMoves(board);
@@ -61,7 +64,7 @@ public class RookTest {
 
     @Test
     void testRookFromCenter() {
-        Piece rook = new Rook(0, squareArray[4][4], "/brook.png");
+        Piece rook = new Rook(0, squareArray[4][4]);
         rook.setPosition(squareArray[4][4]);
 
         RookMovement rookMovement = new RookMovement(rook);
@@ -71,12 +74,12 @@ public class RookTest {
 
     @Test
     void testRookSurroundedByAllies() {
-        Piece rook = new Rook(0, squareArray[4][4], "/brook.png");
+        Piece rook = new Rook(0, squareArray[4][4]);
         rook.setPosition(squareArray[4][4]);
-        squareArray[3][4].setPiece(new Rook(0, squareArray[3][4], "/brook.png"));
-        squareArray[5][4].setPiece(new Rook(0, squareArray[5][4], "/brook.png"));
-        squareArray[4][3].setPiece(new Rook(0, squareArray[4][3], "/brook.png"));
-        squareArray[4][5].setPiece(new Rook(0, squareArray[4][5], "/brook.png"));
+        squareArray[3][4].setPiece(new Rook(0, squareArray[3][4]));
+        squareArray[5][4].setPiece(new Rook(0, squareArray[5][4]));
+        squareArray[4][3].setPiece(new Rook(0, squareArray[4][3]));
+        squareArray[4][5].setPiece(new Rook(0, squareArray[4][5]));
 
         RookMovement rookMovement = new RookMovement(rook);
         List<Square> moves = rookMovement.getAllowedMoves(board);

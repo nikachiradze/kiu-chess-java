@@ -37,7 +37,7 @@ public class PaintSquare extends JComponent {
 
         if (this.square.getOccupyingPiece() != null && this.square.isDispPiece()) {
             Piece occupyingPiece = this.square.getOccupyingPiece();
-            PaintPiece.draw(g, occupyingPiece.getImage());
+            PaintPiece.draw(g, PieceImageProvider.getImage(occupyingPiece));
         }
     }
 }

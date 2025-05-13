@@ -1,27 +1,16 @@
 package main.ChessProject.Models;
 
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.List;
-
-import javax.imageio.ImageIO;
 
 public abstract class Piece {
     private final int color;
     private Square currentSquare;
-    private BufferedImage img;
 
-    public Piece(int color, Square initSq, String img_file) {
+    public Piece(int color, Square initSq) {
         this.color = color;
         this.currentSquare = initSq;
 
-        try {
-            if (this.img == null) {
-                this.img = ImageIO.read(getClass().getResource(img_file));
-            }
-        } catch (IOException e) {
-            System.out.println("File not found: " + e.getMessage());
-        }
+
     }
 
     public Square getCurrentSquare() {
@@ -53,12 +42,6 @@ public abstract class Piece {
     public int getColor() {
         return color;
     }
-
-    public BufferedImage getImage() {
-        return img;
-    }
-
-
 
 
     // No implementation, to be implemented by each subclass

@@ -38,7 +38,6 @@ public class MovementHelper {
         for (int[] direction : LINEAR_DIRECTIONS) {
             int dy = direction[0];
             int dx = direction[1];
-
             int currentY = y + dy;
             int currentX = x + dx;
 

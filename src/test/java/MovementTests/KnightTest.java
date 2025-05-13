@@ -2,10 +2,8 @@ package MovementTests;
 
 import main.ChessProject.Models.*;
 import main.ChessProject.PieceMovement.KnightMovement;
-import main.ChessProject.PieceMovement.QueenMovement;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import main.ChessProject.Models.Knight;
 
 import java.util.List;
 
@@ -27,7 +25,7 @@ public class KnightTest {
                 squareArray[x][y].removePiece();
             }
         }
-        knight = new Knight(0, squareArray[0][0], "/brook.png");
+        knight = new Knight(0, squareArray[0][0]);
         queenSquare = board.getSquareArray()[0][0];
         knight.setPosition(queenSquare);
 
@@ -74,7 +72,7 @@ public class KnightTest {
             int x = 3 + move[0];
             int y = 3 + move[1];
             if (x >= 0 && x < 8 && y >= 0 && y < 8) {
-                board.getSquareArray()[x][y].setPiece(new Pawn(0, board.getSquareArray()[x][y], "/bpawn.png"));
+                board.getSquareArray()[x][y].setPiece(new Pawn(0, board.getSquareArray()[x][y]));
             }
         }
 
@@ -92,7 +90,7 @@ public class KnightTest {
                 {5, 4}, {1, 2}
         };
         for (int[] pos : positions) {
-            board.getSquareArray()[pos[0]][pos[1]].setPiece(new Pawn(1, board.getSquareArray()[pos[0]][pos[1]], "/bpawn.png"));
+            board.getSquareArray()[pos[0]][pos[1]].setPiece(new Pawn(1, board.getSquareArray()[pos[0]][pos[1]]));
         }
 
         knightMovement = new KnightMovement(knight);

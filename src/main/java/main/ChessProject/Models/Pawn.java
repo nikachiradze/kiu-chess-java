@@ -8,8 +8,8 @@ import java.util.List;
 public class Pawn extends Piece {
     private boolean wasMoved;
 
-    public Pawn(int color, Square initSq, String img_file) {
-        super(color, initSq, img_file);
+    public Pawn(int color, Square initSq) {
+        super(color, initSq);
     }
 
     @Override

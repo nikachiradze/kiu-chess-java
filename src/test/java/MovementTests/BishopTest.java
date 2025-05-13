@@ -25,7 +25,7 @@ public class BishopTest {
                 square.removePiece();
             }
         }
-        bishop = new Bishop(0, squareArray[0][0], "/bbishop.png");
+        bishop = new Bishop(0, squareArray[0][0]);
         bishopSquare = board.getSquareArray()[0][0];
         bishop.setPosition(bishopSquare);
         bishopMovement = new BishopMovement(bishop);
@@ -60,7 +60,7 @@ public class BishopTest {
         bishop.setPosition(bishopSquare);
 
         // Friendly piece at f6 (5,5) — same diagonal
-        Piece friendly = new Pawn(0, board.getSquareArray()[5][5], "/bpawn.png");
+        Piece friendly = new Pawn(0, board.getSquareArray()[5][5]);
         board.getSquareArray()[5][5].setPiece(friendly);
 
         bishopMovement = new BishopMovement(bishop);
@@ -77,7 +77,7 @@ public class BishopTest {
         bishop.setPosition(bishopSquare);
 
         // Enemy piece at f6 (5,5)
-        Piece enemy = new Pawn(1, board.getSquareArray()[5][5], "/bpawn.png");
+        Piece enemy = new Pawn(1, board.getSquareArray()[5][5]);
         board.getSquareArray()[5][5].setPiece(enemy);
 
         bishopMovement = new BishopMovement(bishop);
@@ -99,7 +99,7 @@ public class BishopTest {
             int x = 3 + d[0];
             int y = 3 + d[1];
             if (x >= 0 && x < 8 && y >= 0 && y < 8) {
-                board.getSquareArray()[x][y].setPiece(new Pawn(0, board.getSquareArray()[x][y], "/bpawn.png"));
+                board.getSquareArray()[x][y].setPiece(new Pawn(0, board.getSquareArray()[x][y]));
             }
         }
 

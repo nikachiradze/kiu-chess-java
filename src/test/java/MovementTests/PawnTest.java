@@ -1,6 +1,9 @@
 package MovementTests;
 
-import main.ChessProject.Models.*;
+import main.ChessProject.Models.Board;
+import main.ChessProject.Models.Pawn;
+import main.ChessProject.Models.Piece;
+import main.ChessProject.Models.Square;
 import main.ChessProject.PieceMovement.PawnMovement;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -28,7 +31,7 @@ public class PawnTest {
 
     @Test
     void testPawnInitialMove() {
-        Piece pawn = new Pawn(0, pawnSquare, "/bpawn.png");
+        Piece pawn = new Pawn(0, pawnSquare);
         pawn.setPosition(pawnSquare);
         PawnMovement pawnMovement = new PawnMovement(pawn, false);
         List<Square> moves = pawnMovement.getAllowedMoves(board);
@@ -37,7 +40,7 @@ public class PawnTest {
 
     @Test
     void testPawnAfterFirstMove() {
-        Piece pawn = new Pawn(0, pawnSquare, "/bpawn.png");
+        Piece pawn = new Pawn(0, pawnSquare);
         pawn.setPosition(pawnSquare);
         PawnMovement pawnMovement = new PawnMovement(pawn, true);
         List<Square> moves = pawnMovement.getAllowedMoves(board);

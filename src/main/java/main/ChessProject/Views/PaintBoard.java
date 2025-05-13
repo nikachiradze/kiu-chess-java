@@ -78,7 +78,7 @@ public class PaintBoard extends JPanel {
         if (currPiece != null) {
             if ((currPiece.getColor() == 1 && this.board.getTurn())
                     || (currPiece.getColor() == 0 && this.board.getTurn())) {
-                final Image i = currPiece.getImage();
+                final Image i = PieceImageProvider.getImage(currPiece);
                 g.drawImage(i, this.board.getCurrX(), this.board.getCurrY(), null);
             }
         }

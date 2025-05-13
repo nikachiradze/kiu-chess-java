@@ -25,7 +25,7 @@ public class QueenTest {
                 squareArray[x][y].removePiece();
             }
         }
-        queen = new Queen(0, squareArray[0][0], "/brook.png");
+        queen = new Queen(0, squareArray[0][0]);
         queenSquare = board.getSquareArray()[0][0];
         queen.setPosition(queenSquare);
 
@@ -54,7 +54,7 @@ public class QueenTest {
         queenSquare = board.getSquareArray()[3][3];
         queen.setPosition(queenSquare);
 
-        Piece friendlyPiece = new Pawn(0, board.getSquareArray()[5][3], "/bpawn.png");
+        Piece friendlyPiece = new Pawn(0, board.getSquareArray()[5][3]);
         board.getSquareArray()[5][3].setPiece(friendlyPiece);
 
         List<Square> moves = new QueenMovement(queen).getAllowedMoves(board);
@@ -68,7 +68,7 @@ public class QueenTest {
         queenSquare = board.getSquareArray()[3][3];
         queen.setPosition(queenSquare);
 
-        Piece enemyPiece = new Pawn(1, board.getSquareArray()[5][5], "/bpawn.png");
+        Piece enemyPiece = new Pawn(1, board.getSquareArray()[5][5]);
         board.getSquareArray()[5][5].setPiece(enemyPiece);
 
         List<Square> moves = new QueenMovement(queen).getAllowedMoves(board);
@@ -91,7 +91,7 @@ public class QueenTest {
         for (int[] dir : directions) {
             int x = 3 + dir[0];
             int y = 3 + dir[1];
-            Piece p = new Pawn(0, board.getSquareArray()[x][y], "/bpawn.png");
+            Piece p = new Pawn(0, board.getSquareArray()[x][y]);
             board.getSquareArray()[x][y].setPiece(p);
         }
 
@@ -105,10 +105,10 @@ public class QueenTest {
         queenSquare = board.getSquareArray()[3][3];
         queen.setPosition(queenSquare);
 
-        Piece friendly = new Pawn(0, board.getSquareArray()[4][3], "/bpawn.png");
+        Piece friendly = new Pawn(0, board.getSquareArray()[4][3]);
         board.getSquareArray()[4][3].setPiece(friendly);
 
-        Piece enemy = new Pawn(1, board.getSquareArray()[2][3], "/bpawn.png");
+        Piece enemy = new Pawn(1, board.getSquareArray()[2][3]);
         board.getSquareArray()[2][3].setPiece(enemy);
 
         List<Square> moves = new QueenMovement(queen).getAllowedMoves(board);

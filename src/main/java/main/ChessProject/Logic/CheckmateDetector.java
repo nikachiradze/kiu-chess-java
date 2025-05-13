@@ -1,6 +1,9 @@
 package main.ChessProject.Logic;
 
-import main.ChessProject.Models.*;
+import main.ChessProject.Models.Board;
+import main.ChessProject.Models.King;
+import main.ChessProject.Models.Piece;
+import main.ChessProject.Models.Square;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentLinkedDeque;
