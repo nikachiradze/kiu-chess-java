@@ -12,7 +12,7 @@ public class PieceImageProvider {
     private static final Map<String, BufferedImage> imageCache = new HashMap<>();
 
     public static BufferedImage getImage(Piece piece) {
-        String colorPrefix = piece.getColor() == 0 ? "w" : "b";
+        String colorPrefix = piece.getColor() == 1 ? "w" : "b";
         String pieceName = getPieceName(piece);
         String filename = colorPrefix + pieceName + ".png";
 
